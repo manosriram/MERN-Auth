@@ -1,0 +1,42 @@
+$defaultBackground: lightblue;
+
+@mixin centerDiv {
+  margin: auto;
+  text-align: center;
+}
+
+@mixin AuthDiv {
+  @include centerDiv();
+  background: #74b9ff;
+  width: 55vw;
+  height: auto;
+  padding-top: 5vh;
+  padding-bottom: 1vh;
+  border-radius: 5px;
+
+  position: fixed;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  #loginHover {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+
+body,
+html {
+  background: $defaultBackground;
+}
+
+.registerForm {
+  @include AuthDiv();
+}
+
+.loginForm {
+  @include AuthDiv();
+  width: 40vw;
+}
