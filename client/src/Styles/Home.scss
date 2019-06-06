@@ -1,0 +1,42 @@
+$defaultBackGround: #2f363f;
+$defaultTextColor: #eaf0f1;
+
+@mixin centerDiv {
+  margin: auto;
+  text-align: center;
+}
+
+.newContent {
+  background: $defaultBackGround;
+  height: auto;
+  width: 70%;
+  @include centerDiv();
+  border-radius: 6px;
+  color: $defaultTextColor;
+
+  img {
+    width: 25vw;
+    height: 20vh;
+  }
+}
+
+.userInfo {
+  background: #2475b0;
+  width: 50%;
+  @include centerDiv();
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 7px;
+}
+
+#spinner {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  background: white;
+}
+.userInfo {
+  color: whitesmoke;
+}

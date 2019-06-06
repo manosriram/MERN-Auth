@@ -5,8 +5,20 @@ const bcrypt = require("bcryptjs");
 const jsonwt = require("jsonwebtoken");
 const key = require("../Setup/url").secret;
 
+router.post("/userInfo", async (req, res) => {
+  jsonwt.verify(req.cookies.auth_t, key, (err, user) => {
+    if (user) {
+      return res.json({
+        email: user.email,
+        username: user.username,
+        description: user.description
+      });
+    }
+  });
+});
+
 router.post("/register", async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, description } = req.body;
 
   const user = await User.findOne({ email });
 
@@ -16,7 +28,8 @@ router.post("/register", async (req, res) => {
     let newUser = new User({
       username,
       email,
-      password
+      password,
+      description
     });
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -42,8 +55,11 @@ router.post("/login", async (req, res) => {
     var payload = {
       id: user.id,
       username: user.username,
-      email: user.email
+      email: user.email,
+      description: user.description
     };
+
+    console.log(payload);
 
     bcrypt
       .compare(password, user.password)
@@ -56,6 +72,7 @@ router.post("/login", async (req, res) => {
         else {
           jsonwt.sign(payload, key, { expiresIn: 9000000 }, (err, token) => {
             res.cookie("auth_t", token, { maxAge: 90000000 });
+            res.cookie("username", payload.username, { maxAge: 90000000 });
             return res.json({ success: true, errMessage: "Logged In..." });
           });
         }

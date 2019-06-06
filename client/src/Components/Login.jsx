@@ -54,6 +54,7 @@ const Login = props => {
         const data = await response.json();
         if (data.success === true) {
           props.history.push("/home");
+          window.location.reload();
         }
         clearFields();
       } catch (er) {

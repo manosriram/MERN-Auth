@@ -27,3 +27,15 @@ export const StyledButton = styled.button`
     color: black;
   }
 `;
+
+export const StyledTA = styled.textarea`
+  width: 50%;
+  height: 50%;
+  border: solid;
+  outline: none;
+
+  &::placeholder {
+    color: black;
+    text-align: center;
+  }
+`;

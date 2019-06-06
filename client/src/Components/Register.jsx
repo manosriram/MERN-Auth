@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/App.scss";
-import { InputBox, StyledButton } from "../StyledComponents/Basic";
+import { InputBox, StyledButton, StyledTA } from "../StyledComponents/Basic";
 import { Link } from "react-router-dom";
 import Headers from "./Headers";
 
 const clearFields = () => {
   let element = document.querySelectorAll(InputBox);
-  for (let t = 0; t < 4; t++) {
+  for (let t = 0; t < 5; t++) {
     element[t].value = "";
   }
 };
@@ -29,9 +29,9 @@ const confirmChecks = ({ username, email, password, confirmPassword }) => {
       errMessage: "Password must be atleast 4 Characters long."
     };
 
-  if (!regex.exec(email)) {
+  if (!regex.exec(email))
     return { success: false, errMessage: "Not an Email." };
-  }
+
   return { success: true };
 };
 
@@ -50,10 +50,12 @@ const Register = props => {
   const handleSubmit = async () => {
     setErrMessage("");
 
+    console.log(userData);
     const userdata = {
       username: userData.username,
       email: userData.email,
-      password: userData.password
+      password: userData.password,
+      description: userData.description
     };
 
     if (confirmChecks(userData).success) {
@@ -96,6 +98,15 @@ const Register = props => {
           placeholder="Confirm Password"
           type="password"
           name="confirmPassword"
+        />
+        <br />
+        <br />
+        <StyledTA
+          name="description"
+          id="about"
+          cols="30"
+          rows="10"
+          placeholder="About You."
         />
         <br />
         <br />

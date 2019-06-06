@@ -3,8 +3,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const db = require("./Setup/url").url;
+const cookieparser = require("cookie-parser");
 
 app.use(express.json());
+app.use(cookieparser());
 
 mongoose
   .connect(db, { useNewUrlParser: true })
