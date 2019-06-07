@@ -1,4 +1,4 @@
-$defaultBackGround: #2f363f;
+$defaultBackGround: #3498db;
 $defaultTextColor: #eaf0f1;
 
 @mixin centerDiv {
@@ -13,11 +13,18 @@ $defaultTextColor: #eaf0f1;
   @include centerDiv();
   border-radius: 6px;
   color: $defaultTextColor;
-
   img {
     width: 25vw;
     height: 20vh;
   }
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}
+
+#news {
+  @include centerDiv();
 }
 
 .userInfo {

@@ -32,6 +32,7 @@ const Home = props => {
       <>
         <Navbar props={props} />
         <br />
+        <h2 id="news">Today's News !</h2>
         {news.map((N, NI) => {
           return (
             <div key={NI}>
