@@ -1,9 +1,10 @@
+import Navbar from "./Navbar";
 import "../Styles/Home.scss";
 import Headers from "./Headers";
 import React, { useEffect, useState } from "react";
 const Cookie = require("js-cookie");
 
-const Profile = () => {
+const Profile = props => {
   const [loginStat, setLoginStat] = useState(false);
   const [message, setMessage] = useState("");
   const [userData, setUserData] = useState({});
@@ -32,11 +33,14 @@ const Profile = () => {
 
   if (loginStat) {
     return (
-      <div className="userInfo">
-        <h2>Username : {userData.username}</h2>
-        <h2>Email : {userData.email}</h2>
-        <h2>About : {userData.description}</h2>
-      </div>
+      <>
+        <Navbar props={props} />
+        <div className="userInfo">
+          <h2>Username : {userData.username}</h2>
+          <h2>Email : {userData.email}</h2>
+          <h6 id="abt">About : {userData.description}</h6>
+        </div>
+      </>
     );
   } else {
     return (

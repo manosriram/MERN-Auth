@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 const Cookie = require("js-cookie");
 
-const Navbar = () => {
+const Navbar = ({ props }) => {
   const [loginStat, setLoginStat] = useState(false);
   const [username, setUsername] = useState("");
 
@@ -10,23 +10,29 @@ const Navbar = () => {
       setLoginStat(true);
       setUsername(Cookie.get("username"));
     }
+
+    return () => console.log("Cleaned Up !");
   }, []);
 
   const logOut = () => {
     Cookie.remove("auth_t");
-    window.location = "/register";
+    props.history.push("/register");
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="/">
+      <a
+        className="navbar-brand"
+        href="#"
+        onClick={() => props.history.push("/home")}
+      >
         HOME
       </a>
       <button
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
+        data-target=".navbar-collapse"
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
@@ -39,7 +45,7 @@ const Navbar = () => {
             <a
               className="nav-item nav-link active"
               href="#"
-              onClick={() => (window.location = "/profile")}
+              onClick={() => props.history.push("/profile")}
             >
               <strong> {username}</strong>{" "}
               <span className="sr-only">(current)</span>

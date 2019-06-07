@@ -10,7 +10,6 @@ import Profile from "./Components/Profile";
 const App = () => {
   return (
     <>
-      <Navbar />
       <BrowserRouter>
         <Route exact path="/" component={Status} />
         <Route exact path="/home" component={Home} />

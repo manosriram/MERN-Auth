@@ -59,8 +59,6 @@ router.post("/login", async (req, res) => {
       description: user.description
     };
 
-    console.log(payload);
-
     bcrypt
       .compare(password, user.password)
       .then(isCorrect => {

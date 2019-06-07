@@ -6,7 +6,6 @@ const Status = props => {
   const startEff = () => {
     if (Cookie.get("auth_t") === undefined) {
       props.history.push("/register");
-      //   return <Redirect to="/register" />;
     } else {
       props.history.push("/home");
     }
