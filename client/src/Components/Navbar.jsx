@@ -1,3 +1,4 @@
+import "../Styles/Home.scss";
 import React, { useEffect, useState } from "react";
 const Cookie = require("js-cookie");
 
@@ -20,7 +21,7 @@ const Navbar = ({ props }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a
         className="navbar-brand"
         href="#"
